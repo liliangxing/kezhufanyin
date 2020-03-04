@@ -3,6 +3,9 @@ package me.kezhu.music.fragment;
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -11,7 +14,9 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.webkit.JavascriptInterface;
+import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.FrameLayout;
@@ -45,14 +50,16 @@ import okhttp3.Request;
 public class WebviewFragment extends BaseFragment {
     @Bind(R.id.lv_webview)
     public WebView mWebView;
-    @Bind(R.id.full_video)
-    public FrameLayout fullVideo;
+    @Bind(R.id.video_view)
+    public FrameLayout videoview;
     private WebSettings webSettings;
     private ProgressDialog progressDialog;//加载界面的菊花
     private PlaylistAdapter adapter;
     private Handler handler1;
     private String LAST_OPEN_URL;
     private Integer loopCount;
+    private View xCustomView;
+    private WebChromeClient.CustomViewCallback   xCustomViewCallback;
 
     @Nullable
     @Override
@@ -97,7 +104,47 @@ public class WebviewFragment extends BaseFragment {
         mWebView.setVerticalScrollBarEnabled(true);
         mWebView.setWebViewClient(new MyWebViewClient(this.getContext(),mWebView,progressDialog,
                 null));
-        mWebView.setWebChromeClient(new MyWebChromeClient(this.getContext(),this.getActivity(),fullVideo,progressDialog));
+        mWebView.setWebChromeClient(new MyWebChromeClient(this.getContext(),this.getActivity(),progressDialog){
+
+            @Override
+            //播放网络视频时全屏会被调用的方法
+            public void onShowCustomView(View view, WebChromeClient.CustomViewCallback callback)
+            {
+                //进入全屏
+                xCustomView = view;
+                videoview.setVisibility(View.VISIBLE);
+                videoview.addView(xCustomView);
+                videoview.bringToFront();
+
+                getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);//设置横屏
+                getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);//设置全屏
+
+            }
+
+            @Override
+            //视频播放退出全屏会被调用的
+            public void onHideCustomView() {
+
+                if (xCustomView == null)//不是全屏播放状态
+                    return;
+                xCustomView.setVisibility(View.GONE);
+
+                // Remove the custom view from its container.
+                videoview.removeView(xCustomView);
+                xCustomView = null;
+                videoview.setVisibility(View.GONE);
+                xCustomViewCallback.onCustomViewHidden();
+
+                mWebView.setVisibility(View.VISIBLE);
+                // Hide the custom view.
+                getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+                getActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);//清除全屏
+
+                //Log.i(LOGTAG, "set it to webVew");
+            }
+
+
+        });
         mWebView.addJavascriptInterface(
                 new JSInterface()
                 , "itcast");

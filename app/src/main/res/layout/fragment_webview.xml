@@ -3,14 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <FrameLayout
-        android:id="@+id/full_video"
+        android:id="@+id/video_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="gone"></FrameLayout>
+
     <WebView
         android:id="@+id/lv_webview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scrollbarStyle="outsideOverlay"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:layout_marginBottom="@dimen/play_bar_height" />
 </FrameLayout>

@@ -25,12 +25,10 @@ public class MyWebChromeClient extends WebChromeClient {
     private ProgressDialog progressDialog;//加载界面的菊花
     private Context context;//加载界面的菊花
     private View customView ;
-    private FrameLayout fullVideo;
     private Activity activity;
-    public MyWebChromeClient(Context context, Activity activity, FrameLayout fullVideo, ProgressDialog progressDialog){
+    public MyWebChromeClient(Context context, Activity activity,  ProgressDialog progressDialog){
         this.context = context;
         this.progressDialog = progressDialog;
-        this.fullVideo = fullVideo;
         this.activity = activity;
     }
     /**
@@ -142,31 +140,5 @@ public class MyWebChromeClient extends WebChromeClient {
         });
         builder.show();
         return true;//自己处理
-    }
-
-
-    @Override
-    public void onHideCustomView() {
-        //退出全屏
-        if (customView == null){
-            return;
-        }
-        //移除全屏视图并隐藏
-        fullVideo.removeView(customView);
-        fullVideo.setVisibility(View.GONE);
-        activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);//设置竖屏
-        activity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);//清除全屏
-
-    }
-
-    @Override
-    public void onShowCustomView(View view, CustomViewCallback callback) {
-        //进入全屏
-        customView = view;
-        fullVideo.setVisibility(View.VISIBLE);
-        fullVideo.addView(customView);
-        fullVideo.bringToFront();
-        activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);//设置横屏
-        activity.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);//设置全屏
     }
 }
