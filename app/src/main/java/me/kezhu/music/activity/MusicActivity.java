@@ -17,9 +17,11 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import me.kezhu.music.adapter.FragmentAdapter;
@@ -205,14 +207,22 @@ public class MusicActivity extends BaseActivity implements View.OnClickListener,
 
     @Override
     public void onPageSelected(int position) {
+        FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) mWebView.getLayoutParams();
         if (position == 0) {
             tvLocalMusic.setSelected(true);
             tvOnlineMusic.setSelected(false);
             iv_share.setVisibility(View.GONE);
+            flPlayBar.setVisibility(View.VISIBLE);
+            layoutParams.bottomMargin =getResources().getDimensionPixelOffset(R.dimen.play_bar_height);
+            mWebView.setLayoutParams(layoutParams);
         } else {
             tvLocalMusic.setSelected(false);
             tvOnlineMusic.setSelected(true);
             iv_share.setVisibility(View.VISIBLE);
+            iv_share.setVisibility(View.VISIBLE);
+            flPlayBar.setVisibility(View.GONE);
+            layoutParams.bottomMargin=0;
+            mWebView.setLayoutParams(layoutParams);
         }
     }
 

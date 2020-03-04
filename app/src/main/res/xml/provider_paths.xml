@@ -11,5 +11,5 @@
     <!--/storage/emulated/0/Android/data/${applicationId}/files/apk/-->
     <external-path
         name="beta_external_files_music_path"
-        path="KezhuFanyin/Music/" />
+        path="Music/kezhu/" />
 </paths>

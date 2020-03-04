@@ -29,7 +29,7 @@ public class FileUtils {
     }
 
     public static String getMusicDir() {
-        String dir = getAppDir() + "/Music/";
+        String dir = Environment.getExternalStorageDirectory() + "/Music/kezhu/";
         return mkdirs(dir);
     }
 
@@ -54,7 +54,7 @@ public class FileUtils {
     }
 
     public static String getRelativeMusicDir() {
-        String dir = "KezhuFanyin/Music/";
+        String dir = "Music/kezhu/";
         return mkdirs(dir);
     }
 

@@ -94,6 +94,7 @@ public class WebviewFragment extends BaseFragment {
         webSettings.setMediaPlaybackRequiresUserGesture(false);
         webSettings.setUseWideViewPort(true);
         webSettings.setLoadWithOverviewMode(true);
+        mWebView.setVerticalScrollBarEnabled(true);
         mWebView.setWebViewClient(new MyWebViewClient(this.getContext(),mWebView,progressDialog,
                 null));
         mWebView.setWebChromeClient(new MyWebChromeClient(this.getContext(),this.getActivity(),fullVideo,progressDialog));
@@ -191,6 +192,14 @@ public class WebviewFragment extends BaseFragment {
             }
         }
         if (loop) {
+            if(null == loopCount){
+                //直接拿，又匹配不到媒体库，删除文件，重新走下载流程
+                File  file=new File(path);
+                if(file.delete()){
+                    downloadAndPlay(LAST_OPEN_URL);
+                    return;
+                }
+            }
             loopCount --;
             if(loopCount<0) return;
             try {
