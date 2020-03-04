@@ -88,6 +88,10 @@ public class MusicActivity extends BaseActivity implements View.OnClickListener,
         QuitTimer.get().setOnTimerListener(this);
         parseIntent();
         mWebView = mSheetListFragment.mWebView;
+        mWebView.setFocusable(false);
+        mWebView.setVerticalScrollBarEnabled(true);
+        mWebView.setHorizontalScrollBarEnabled(true);
+        mWebView.setScrollBarStyle(View.SCROLLBARS_OUTSIDE_OVERLAY);
     }
 
     @Override
