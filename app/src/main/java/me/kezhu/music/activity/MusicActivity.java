@@ -2,10 +2,13 @@ package me.kezhu.music.activity;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -13,11 +16,14 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -40,6 +46,7 @@ import me.kezhu.music.executor.WeatherExecutor;
 import me.kezhu.music.fragment.LocalMusicFragment;
 import me.kezhu.music.fragment.PlayFragment;
 import me.kezhu.music.fragment.WebviewFragment;
+import me.kezhu.music.webview.MyWebChromeClient;
 
 public class MusicActivity extends BaseActivity implements View.OnClickListener, QuitTimer.OnTimerListener,
         NavigationView.OnNavigationItemSelectedListener, ViewPager.OnPageChangeListener {
@@ -71,11 +78,31 @@ public class MusicActivity extends BaseActivity implements View.OnClickListener,
     private MenuItem timerItem;
     private boolean isPlayFragmentShow;
     private WebView mWebView;
+    @Bind(R.id.video_view)
+    public FrameLayout videoview;
+    private ProgressDialog progressDialog;//加载界面的菊花
+    private View xCustomView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_music);
+    }
+
+    /**
+     * 当横竖屏切换时会调用该方法
+     * @author
+     */
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        Log.i("testwebview", "=====<<<  onConfigurationChanged  >>>=====");
+        super.onConfigurationChanged(newConfig);
+
+        if(newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE){
+            Log.i("webview", "   现在是横屏1");
+        }else if(newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
+            Log.i("webview", "   现在是竖屏1");
+        }
     }
 
     @Override
@@ -87,9 +114,51 @@ public class MusicActivity extends BaseActivity implements View.OnClickListener,
         AudioPlayer.get().addOnPlayEventListener(controlPanel);
         QuitTimer.get().setOnTimerListener(this);
         parseIntent();
+        //mViewPager.setCurrentItem(1); 放在这里不行
         mWebView = mSheetListFragment.mWebView;
         mWebView.setHorizontalFadingEdgeEnabled(true);
         mWebView.setScrollbarFadingEnabled(true);
+        mViewPager.setCurrentItem(1);
+        mWebView.setWebChromeClient(new MyWebChromeClient(this,this,progressDialog){
+
+            @Override
+            //播放网络视频时全屏会被调用的方法
+            public void onShowCustomView(View view, WebChromeClient.CustomViewCallback callback)
+            {
+                //进入全屏
+                xCustomView = view;
+                videoview.setVisibility(View.VISIBLE);
+                videoview.addView(xCustomView);
+                videoview.bringToFront();
+
+                setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);//设置横屏
+                getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);//设置全屏
+
+            }
+
+            @Override
+            //视频播放退出全屏会被调用的
+            public void onHideCustomView() {
+
+                if (xCustomView == null)//不是全屏播放状态
+                    return;
+                xCustomView.setVisibility(View.GONE);
+
+                // Remove the custom view from its container.
+                videoview.removeView(xCustomView);
+                xCustomView = null;
+                videoview.setVisibility(View.GONE);
+
+                mWebView.setVisibility(View.VISIBLE);
+                // Hide the custom view.
+                setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);//清除全屏
+
+                //Log.i(LOGTAG, "set it to webVew");
+            }
+
+
+        });
     }
 
     @Override
