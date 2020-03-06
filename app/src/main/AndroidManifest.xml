@@ -86,6 +86,10 @@
             android:label="@string/menu_about"
             android:screenOrientation="portrait" />
         <activity
+            android:name="me.kezhu.music.activity.FullScreenActivity"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:screenOrientation="portrait" />
+        <activity
             android:name="me.kezhu.music.activity.MusicInfoActivity"
             android:label="@string/music_info"
             android:screenOrientation="portrait" />

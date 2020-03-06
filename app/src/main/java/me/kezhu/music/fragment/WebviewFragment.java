@@ -27,6 +27,7 @@ import com.zhy.http.okhttp.callback.FileCallBack;
 import java.io.File;
 import java.util.List;
 
+import me.kezhu.music.activity.FullScreenActivity;
 import me.kezhu.music.adapter.PlaylistAdapter;
 import me.kezhu.music.application.AppCache;
 import me.kezhu.music.constants.Keys;
@@ -99,9 +100,28 @@ public class WebviewFragment extends BaseFragment {
         webSettings.setMediaPlaybackRequiresUserGesture(false);
         webSettings.setUseWideViewPort(true);
         webSettings.setLoadWithOverviewMode(true);
+        webSettings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
         mWebView.setVerticalScrollBarEnabled(true);
-        mWebView.setWebViewClient(new MyWebViewClient(this.getContext(),mWebView,progressDialog,
-                null));
+        mWebView.setWebViewClient(new MyWebViewClient(this.getContext(),progressDialog){
+            /**
+             * 当打开超链接的时候，回调的方法
+             * WebView：自己本身mWebView
+             * url：即将打开的url
+             */
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                if(HttpUtils.IsVideoUrl(url)){
+                    Intent intent = new Intent(getActivity(), FullScreenActivity.class);
+                    intent.putExtra("url",url);
+                    startActivity(intent);
+                    return true;
+                }
+                //自己处理新的url
+                LAST_OPEN_URL = url;
+                mWebView.loadUrl(url);
+                return true;//true就是自己处理
+            }
+        });
 
         mWebView.addJavascriptInterface(
                 new JSInterface()

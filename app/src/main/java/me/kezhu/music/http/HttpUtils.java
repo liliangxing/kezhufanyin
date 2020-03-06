@@ -79,4 +79,14 @@ public class HttpUtils {
         }
         return "";
     }
+
+    public static boolean IsVideoUrl(String file) {
+        String suffixes = "avi|mpeg|3gp|mp3|mp4|wav|jpeg|gif|jpg|png|apk|exe|txt|java|doc";
+        Pattern pat = Pattern.compile("([\\w|-]+)[\\.](" + suffixes + ")");//正则判断
+        Matcher mc = pat.matcher(file);
+        while(mc.find()){
+            return true;
+        }
+        return false;
+    }
 }
