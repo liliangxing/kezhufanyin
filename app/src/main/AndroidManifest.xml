@@ -87,8 +87,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name="me.kezhu.music.activity.FullScreenActivity"
-            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
-            android:screenOrientation="portrait" />
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize" />
         <activity
             android:name="me.kezhu.music.activity.MusicInfoActivity"
             android:label="@string/music_info"

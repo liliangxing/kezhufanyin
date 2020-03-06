@@ -118,7 +118,7 @@ public class MusicActivity extends BaseActivity implements View.OnClickListener,
         mWebView = mSheetListFragment.mWebView;
         mWebView.setHorizontalFadingEdgeEnabled(true);
         mWebView.setScrollbarFadingEnabled(true);
-        mViewPager.setCurrentItem(1);
+        //mViewPager.setCurrentItem(1);
         mWebView.setWebChromeClient(new MyWebChromeClient(this,this,progressDialog){
 
             @Override
