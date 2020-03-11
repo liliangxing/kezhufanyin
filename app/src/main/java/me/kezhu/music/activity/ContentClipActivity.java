@@ -15,17 +15,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import java.io.File;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-import java.util.Locale;
-
 import me.kezhu.music.R;
-import me.kezhu.music.constants.Extras;
-import me.kezhu.music.model.Music;
-import me.kezhu.music.utils.CoverLoader;
-import me.kezhu.music.utils.FileUtils;
-import me.kezhu.music.utils.SystemUtils;
 
 
 /**
@@ -92,25 +82,25 @@ public class ContentClipActivity extends BaseActivity {
         contentText = miniProgramContentEt.getText().toString();
         if(miniProgramAppUrlEt.isChecked()){
             int index = baseUrl.indexOf("?");
-            String subContent=null;
+           /* String subContent=null;
             try {
                 subContent = URLEncoder.encode(
                         contentText.substring(0,contentText.length()>5?5:contentText.length()), "UTF-8");
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
             }
-            subContent = "scrollTo="+subContent;
+            subContent = "scrollTo="+subContent;*/
             if (index>0){
-                baseUrl = baseUrl+"&"+subContent;
-            }else {
+                baseUrl = baseUrl.split("\\?")[0];
+            }/*else {
                 baseUrl = baseUrl+"?"+subContent;
-            }
+            }*/
         }
-        final String url = getString(R.string.share_url_text)+baseUrl;
+        final  String url = getString(R.string.share_url_text)+baseUrl;
         miniProgramUrlEt.setText(url);
     }
 
-    private void shareWeixin(String content, String title){
+    private void shareWeixin(String content,String title){
         generateUrl();
         String url;
         String appDownloadUrl;
