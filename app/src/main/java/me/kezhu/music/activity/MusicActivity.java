@@ -21,13 +21,11 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import me.kezhu.music.adapter.FragmentAdapter;
@@ -251,7 +249,7 @@ public class MusicActivity extends BaseActivity implements View.OnClickListener,
     }
 
     private void shareWeixin(){
-        Intent intent = new Intent(this, ContentClipActivity.class);
+        Intent intent = new Intent(this, SubscribeMessageActivity.class);
         intent.putExtra("title", mWebView.getTitle());
         intent.putExtra("url", mWebView.getUrl());
 

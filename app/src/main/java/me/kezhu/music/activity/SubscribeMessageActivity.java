@@ -22,7 +22,7 @@ import me.kezhu.music.R;
  * Created by willenwu on 2018/5/10
  */
 
-public class ContentClipActivity extends BaseActivity {
+public class SubscribeMessageActivity extends BaseActivity {
 
     private ClipboardManager cm;
     private ClipData mClipData;
@@ -115,14 +115,15 @@ public class ContentClipActivity extends BaseActivity {
         // 创建普通字符型ClipData
         content= content==null?"":content+"\n";
         content= content.equals("\n")?"":content;
+        String copyText = content+
+                title+"\n"+url+appDownloadUrl;
         mClipData = ClipData.newPlainText("Label",
-                content+
-                        title+"\n"+url+appDownloadUrl);
+                copyText);
         // 将ClipData内容放到系统剪贴板里。
         cm.setPrimaryClip(mClipData);
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("text/plain");
-        intent.putExtra(Intent.EXTRA_TEXT, mClipData);
+        intent.putExtra(Intent.EXTRA_TEXT, copyText);
         startActivity(Intent.createChooser(intent, getString(R.string.share)));
     }
 

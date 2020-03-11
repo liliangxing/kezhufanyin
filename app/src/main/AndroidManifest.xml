@@ -93,7 +93,7 @@
             android:label="@string/music_info"
             android:screenOrientation="portrait" />
         <activity
-            android:name="me.kezhu.music.activity.ContentClipActivity"
+            android:name="me.kezhu.music.activity.SubscribeMessageActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name="me.kezhu.music.activity.PlaylistActivity"
