@@ -9,19 +9,11 @@
             android:key="share"
             android:title="@string/menu_share" />
         <Preference
-            android:key="star"
-            android:summary="前往项目地址给个Star，鼓励作者"
-            android:title="给我点赞" />
+            android:key="download"
+            android:summary="打开地址下载最新版，复制链接给朋友"
+            android:title="下载地址" />
     </PreferenceCategory>
     <PreferenceCategory android:title="关于作者">
-        <Preference
-            android:key="weibo"
-            android:summary="@string/about_weibo"
-            android:title="微博" />
-        <Preference
-            android:key="jianshu"
-            android:summary="@string/about_jianshu"
-            android:title="简书" />
         <Preference
             android:key="github"
             android:summary="@string/about_github"
@@ -29,10 +21,6 @@
     </PreferenceCategory>
     <PreferenceCategory android:title="版权">
         <Preference
-            android:summary="百度音乐"
-            android:title="在线音乐" />
-        <Preference
-            android:summary="高德地图"
-            android:title="天气数据" />
+            android:summary="无" />
     </PreferenceCategory>
 </PreferenceScreen>

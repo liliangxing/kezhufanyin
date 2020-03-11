@@ -22,9 +22,7 @@ public class AboutActivity extends BaseActivity {
     public static class AboutFragment extends PreferenceFragment implements Preference.OnPreferenceClickListener {
         private Preference mVersion;
         private Preference mShare;
-        private Preference mStar;
-        private Preference mWeibo;
-        private Preference mJianshu;
+        private Preference mDownload;
         private Preference mGithub;
 
         @Override
@@ -34,9 +32,7 @@ public class AboutActivity extends BaseActivity {
 
             mVersion = findPreference("version");
             mShare = findPreference("share");
-            mStar = findPreference("star");
-            mWeibo = findPreference("weibo");
-            mJianshu = findPreference("jianshu");
+            mDownload = findPreference("download");
             mGithub = findPreference("github");
 
             mVersion.setSummary("v " + BuildConfig.VERSION_NAME);
@@ -45,9 +41,7 @@ public class AboutActivity extends BaseActivity {
 
         private void setListener() {
             mShare.setOnPreferenceClickListener(this);
-            mStar.setOnPreferenceClickListener(this);
-            mWeibo.setOnPreferenceClickListener(this);
-            mJianshu.setOnPreferenceClickListener(this);
+            mDownload.setOnPreferenceClickListener(this);
             mGithub.setOnPreferenceClickListener(this);
         }
 
@@ -56,10 +50,10 @@ public class AboutActivity extends BaseActivity {
             if (preference == mShare) {
                 share();
                 return true;
-            } else if (preference == mStar) {
-                openUrl(getString(R.string.about_project_url));
+            } else if (preference == mDownload) {
+                openUrl(getString(R.string.about_d_url));
                 return true;
-            } else if (preference == mWeibo || preference == mJianshu || preference == mGithub) {
+            } else if (preference == mGithub) {
                 openUrl(preference.getSummary().toString());
                 return true;
             }
