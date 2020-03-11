@@ -53,7 +53,7 @@ public class FullScreenActivity extends Activity {
     private void setWebView(){
        WebSettings webSettings = webView.getSettings();
        webSettings.setJavaScriptEnabled(true);
-        webSettings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
+       //webSettings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
     }
 
     private class MyWebChromeClient extends WebChromeClient{

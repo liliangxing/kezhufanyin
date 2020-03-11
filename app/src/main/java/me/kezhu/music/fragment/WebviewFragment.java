@@ -100,7 +100,7 @@ public class WebviewFragment extends BaseFragment {
         webSettings.setMediaPlaybackRequiresUserGesture(false);
         webSettings.setUseWideViewPort(true);
         webSettings.setLoadWithOverviewMode(true);
-        webSettings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
+        //webSettings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
         mWebView.setVerticalScrollBarEnabled(true);
         mWebView.setWebViewClient(new MyWebViewClient(this.getContext(),progressDialog){
             /**
@@ -171,6 +171,7 @@ public class WebviewFragment extends BaseFragment {
 
                         @Override
                         public void inProgress(float progress, long total, int id) {
+                            showProgress("正在下载……"+((float)Math.round(progress*100*100)/100)+"%\n");
                         }
 
                         @Override
