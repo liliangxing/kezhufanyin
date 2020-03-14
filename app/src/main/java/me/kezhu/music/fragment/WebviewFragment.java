@@ -171,7 +171,7 @@ public class WebviewFragment extends BaseFragment {
 
                         @Override
                         public void inProgress(float progress, long total, int id) {
-                            showProgress("正在下载……"+((float)Math.round(progress*100*100)/100)+"%\n");
+                            showProgress("正在下载……"+((float)Math.round(progress*100*100)/100)+"%");
                         }
 
                         @Override
