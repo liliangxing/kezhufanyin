@@ -80,22 +80,23 @@ public class SubscribeMessageActivity extends BaseActivity {
     private void generateUrl(){
         String baseUrl = data.getStringExtra("url");
         contentText = miniProgramContentEt.getText().toString();
-        if(miniProgramAppUrlEt.isChecked()){
+        /*if(miniProgramAppUrlEt.isChecked()){
             int index = baseUrl.indexOf("?");
-           /* String subContent=null;
+            String subContent=null;
             try {
                 subContent = URLEncoder.encode(
                         contentText.substring(0,contentText.length()>5?5:contentText.length()), "UTF-8");
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
             }
-            subContent = "scrollTo="+subContent;*/
+            subContent = "scrollTo="+subContent;
             if (index>0){
                 baseUrl = baseUrl.split("\\?")[0];
-            }/*else {
+            }else {
                 baseUrl = baseUrl+"?"+subContent;
-            }*/
-        }
+            }
+        }*/
+        baseUrl = baseUrl.split("\\?")[0];
         final  String url = getString(R.string.share_url_text)+baseUrl;
         miniProgramUrlEt.setText(url);
     }
