@@ -28,6 +28,7 @@ import java.io.File;
 import java.util.List;
 
 import me.kezhu.music.activity.FullScreenActivity;
+import me.kezhu.music.activity.MusicActivity;
 import me.kezhu.music.adapter.PlaylistAdapter;
 import me.kezhu.music.application.AppCache;
 import me.kezhu.music.constants.Keys;
@@ -212,6 +213,7 @@ public class WebviewFragment extends BaseFragment {
                 AudioPlayer.get().addAndPlay(m);
                 ToastUtils.show("已添加到播放列表");
                 loop = false;
+                MusicActivity.instance.showPlayingFragment();
                 break;
             }else {
                 loop = true;

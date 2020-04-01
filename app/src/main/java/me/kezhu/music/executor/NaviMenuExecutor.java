@@ -57,7 +57,7 @@ public class NaviMenuExecutor {
         activity.recreate();
     }
 
-    private void timerDialog() {
+    public void timerDialog() {
         new AlertDialog.Builder(activity)
                 .setTitle(R.string.menu_timer)
                 .setItems(activity.getResources().getStringArray(R.array.timer_text), (dialog, which) -> {
