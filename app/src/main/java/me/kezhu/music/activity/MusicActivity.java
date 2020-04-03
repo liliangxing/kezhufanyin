@@ -56,8 +56,6 @@ public class MusicActivity extends BaseActivity implements View.OnClickListener,
     private ImageView ivMenu;
     @Bind(R.id.iv_share)
     private ImageView iv_share;
-    @Bind(R.id.iv_timer)
-    private ImageView iv_timer;
     @Bind(R.id.tv_local_music)
     private TextView tvLocalMusic;
     @Bind(R.id.tv_online_music)
@@ -185,7 +183,6 @@ public class MusicActivity extends BaseActivity implements View.OnClickListener,
 
         ivMenu.setOnClickListener(this);
         iv_share.setOnClickListener(this);
-        iv_timer.setOnClickListener(this);
         tvLocalMusic.setOnClickListener(this);
         tvOnlineMusic.setOnClickListener(this);
         flPlayBar.setOnClickListener(this);
@@ -241,8 +238,6 @@ public class MusicActivity extends BaseActivity implements View.OnClickListener,
                 intent.putExtra(Intent.EXTRA_TEXT, getString(R.string.share_app, getString(R.string.app_name)));
                 startActivity(Intent.createChooser(intent, getString(R.string.share)));*/
                 break;
-            case R.id.iv_timer:
-                naviMenuExecutor.timerDialog();
             case R.id.tv_local_music:
                 mViewPager.setCurrentItem(0);
                 break;
@@ -296,7 +291,6 @@ public class MusicActivity extends BaseActivity implements View.OnClickListener,
         } else {
             tvLocalMusic.setSelected(false);
             tvOnlineMusic.setSelected(true);
-            iv_share.setVisibility(View.VISIBLE);
             iv_share.setVisibility(View.VISIBLE);
             flPlayBar.setVisibility(View.GONE);
             layoutParams.bottomMargin=0;
