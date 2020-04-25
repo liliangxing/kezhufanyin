@@ -38,6 +38,7 @@
             android:value="${AMAP_KEY}" />
 
         <service android:name="me.kezhu.music.service.PlayService" />
+        <service android:name="me.kezhu.music.service.PasteCopyService" />
 
         <receiver android:name="me.kezhu.music.receiver.DownloadReceiver">
             <intent-filter>

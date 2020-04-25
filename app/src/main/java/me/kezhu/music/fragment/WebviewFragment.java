@@ -35,6 +35,7 @@ import me.kezhu.music.constants.Keys;
 import me.kezhu.music.http.HttpUtils;
 import me.kezhu.music.model.Music;
 import me.kezhu.music.service.AudioPlayer;
+import me.kezhu.music.service.PasteCopyService;
 import me.kezhu.music.utils.FileUtils;
 import me.kezhu.music.utils.MusicUtils;
 import me.kezhu.music.utils.ToastUtils;
@@ -81,6 +82,7 @@ public class WebviewFragment extends BaseFragment {
                 }
             }
         };
+       // PasteCopyService.startCommand(getActivity());
     }
 
     @Override
