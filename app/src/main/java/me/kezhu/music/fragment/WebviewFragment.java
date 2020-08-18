@@ -12,7 +12,6 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -103,15 +102,6 @@ public class WebviewFragment extends BaseFragment {
         webSettings.setLoadWithOverviewMode(true);
         //webSettings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
         mWebView.setVerticalScrollBarEnabled(true);
-        mWebView.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                if(mWebView.getUrl().equals(Keys.BLANK)){
-                    mWebView.loadUrl(Keys.HOME_PAGE);
-                }
-                return true;
-            }
-        });
         mWebView.setWebViewClient(new MyWebViewClient(this.getContext(),progressDialog){
             /**
              * 当打开超链接的时候，回调的方法
@@ -136,7 +126,7 @@ public class WebviewFragment extends BaseFragment {
         mWebView.addJavascriptInterface(
                 new JSInterface()
                 , "itcast");
-        mWebView.loadUrl(Keys.BLANK);
+        mWebView.loadUrl(Keys.HOME_PAGE);
     }
 
     private final class JSInterface{
