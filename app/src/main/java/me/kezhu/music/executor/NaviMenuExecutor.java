@@ -67,7 +67,7 @@ public class NaviMenuExecutor {
                 .show();
     }
 
-    private void startTimer(int minute) {
+    public void startTimer(int minute) {
         QuitTimer.get().start(minute * 60 * 1000);
         if (minute > 0) {
             ToastUtils.show(activity.getString(R.string.timer_set, String.valueOf(minute)));

@@ -27,6 +27,7 @@ import com.hwangjr.rxbus.annotation.Tag;
 
 import java.io.File;
 
+import me.kezhu.music.activity.MusicActivity;
 import me.kezhu.music.activity.MusicInfoActivity;
 import me.kezhu.music.adapter.OnMoreClickListener;
 import me.kezhu.music.adapter.PlaylistAdapter;
@@ -46,7 +47,8 @@ import me.kezhu.music.constants.RxBusTags;
  * 本地音乐列表
  * Created by wcy on 2015/11/26.
  */
-public class LocalMusicFragment extends BaseFragment implements AdapterView.OnItemClickListener, OnMoreClickListener {
+public class LocalMusicFragment extends BaseFragment implements AdapterView.OnItemClickListener, OnMoreClickListener,
+        AdapterView.OnItemLongClickListener {
     @Bind(R.id.lv_local_music)
     private ListView lvLocalMusic;
     @Bind(R.id.v_searching)
@@ -113,6 +115,7 @@ public class LocalMusicFragment extends BaseFragment implements AdapterView.OnIt
     @Override
     protected void setListener() {
         lvLocalMusic.setOnItemClickListener(this);
+        lvLocalMusic.setOnItemLongClickListener(this);
     }
 
     @Override
@@ -129,6 +132,15 @@ public class LocalMusicFragment extends BaseFragment implements AdapterView.OnIt
         });
         dialog.show();
 
+    }
+    private int minute = 20;
+    @Override
+    public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+        Music music = AppCache.get().getLocalMusicList().get(position);
+        AudioPlayer.get().addAndPlay(music);
+        MusicActivity.instance.naviMenuExecutor.startTimer(minute);
+        minute = minute + 10;
+        return true;
     }
 
     @Override

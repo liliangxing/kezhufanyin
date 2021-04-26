@@ -72,7 +72,7 @@ public class MusicActivity extends BaseActivity implements View.OnClickListener,
     private WebviewFragment mSheetListFragment;
     private PlayFragment mPlayFragment;
     private ControlPanel controlPanel;
-    private NaviMenuExecutor naviMenuExecutor;
+    public NaviMenuExecutor naviMenuExecutor;
     private MenuItem timerItem;
     private boolean isPlayFragmentShow;
     private WebView mWebView;
