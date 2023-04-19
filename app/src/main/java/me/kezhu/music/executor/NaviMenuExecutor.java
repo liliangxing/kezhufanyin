@@ -30,9 +30,6 @@ public class NaviMenuExecutor {
             case R.id.action_setting:
                 startActivity(SettingActivity.class);
                 return true;
-            case R.id.action_address:
-                activity.showHideAddress();
-                return true;
             case R.id.action_homepage:
                 activity.setHomePage();
                 return true;
