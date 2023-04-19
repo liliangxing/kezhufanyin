@@ -42,6 +42,8 @@
     <string name="search_tips">歌曲名、歌手名</string>
     <string name="search_empty">未找到相关结果</string>
     <string name="menu_setting">功能设置</string>
+    <string name="menu_address">显/隐地址栏</string>
+    <string name="menu_homepage">设为主页</string>
     <string name="menu_share">推荐给朋友</string>
     <string name="menu_about">关于科注梵音</string>
     <string name="menu_night">夜间模式</string>

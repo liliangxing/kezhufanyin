@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +20,10 @@ import android.webkit.JavascriptInterface;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.FileCallBack;
@@ -51,6 +55,10 @@ import okhttp3.Request;
 public class WebviewFragment extends BaseFragment {
     @Bind(R.id.lv_webview)
     public WebView mWebView;
+    @Bind(R.id.ll_web)
+    public LinearLayout linearLayout;
+    @Bind(R.id.et_url)
+    public EditText etUrl;
     private WebSettings webSettings;
     private ProgressDialog progressDialog;//加载界面的菊花
     private PlaylistAdapter adapter;
@@ -59,6 +67,7 @@ public class WebviewFragment extends BaseFragment {
     private Integer loopCount;
     private View xCustomView;
     private WebChromeClient.CustomViewCallback   xCustomViewCallback;
+    private static final String FILE_NAME = "test.txt";
 
     @Nullable
     @Override
@@ -126,7 +135,26 @@ public class WebviewFragment extends BaseFragment {
         mWebView.addJavascriptInterface(
                 new JSInterface()
                 , "itcast");
-        mWebView.loadUrl(Keys.HOME_PAGE);
+        String url = FileUtils.readFileData(FILE_NAME, getActivity()); // 读取文件
+        if (url.equals("")) {
+            url = Keys.HOME_PAGE;
+        }
+        mWebView.loadUrl(url);
+        linearLayout.setVisibility(View.GONE);
+    }
+
+    /**
+     * 跳转操作
+     * @param view
+     */
+    public void toChange(View view){
+        //1.获取地址
+        String url = etUrl.getText().toString().trim();
+        if(TextUtils.isEmpty(url)){
+            url = Keys.HOME_PAGE;//如果为空，赋默认值：tomcat首页
+        }
+        //2.webview展示地址
+        mWebView.loadUrl(url);
     }
 
     private final class JSInterface{
@@ -242,4 +270,18 @@ public class WebviewFragment extends BaseFragment {
             }
         }
 
+    public void showHideAddress() {
+        if (linearLayout.getVisibility() == View.GONE) {
+            linearLayout.setVisibility(View.VISIBLE);
+        } else {
+            linearLayout.setVisibility(View.GONE);
+        }
+    }
+
+    public void setHomePage() {
+        String currentUrl = mWebView.getUrl();
+        etUrl.setText(currentUrl);
+        FileUtils.writeFileData(FILE_NAME, currentUrl, getActivity()); // 写入文件
+        ToastUtils.show("设置成功");
+    }
 }

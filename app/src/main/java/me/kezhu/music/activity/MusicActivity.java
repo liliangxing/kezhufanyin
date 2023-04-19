@@ -105,6 +105,14 @@ public class MusicActivity extends BaseActivity implements View.OnClickListener,
         }
     }
 
+    public void showHideAddress() {
+        mSheetListFragment.showHideAddress();
+    }
+
+    public void setHomePage() {
+        mSheetListFragment.setHomePage();
+    }
+
     @Override
     protected void onServiceBound() {
         setupView();
