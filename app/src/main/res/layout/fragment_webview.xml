@@ -2,28 +2,36 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <LinearLayout
-        android:id="@+id/ll_web"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/et_url"
-            android:layout_width="0dp"
+        <LinearLayout
+            android:id="@+id/ll_web"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:hint="请输入地址" />
+            android:orientation="horizontal">
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="toChange"
-            android:text="跳转" />
+            <EditText
+                android:id="@+id/et_url"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="请输入地址" />
+
+            <Button
+                android:id="@+id/et_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="跳转" />
+        </LinearLayout>
+
+        <WebView
+            android:id="@+id/lv_webview"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginBottom="@dimen/play_bar_height" />
     </LinearLayout>
-    <WebView
-        android:id="@+id/lv_webview"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_marginBottom="@dimen/play_bar_height" />
 </FrameLayout>

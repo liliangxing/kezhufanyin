@@ -20,6 +20,7 @@ import android.webkit.JavascriptInterface;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
@@ -52,13 +53,15 @@ import okhttp3.Request;
  * 在线音乐
  * Created by wcy on 2015/11/26.
  */
-public class WebviewFragment extends BaseFragment {
+public class WebviewFragment extends BaseFragment implements View.OnClickListener {
     @Bind(R.id.lv_webview)
     public WebView mWebView;
     @Bind(R.id.ll_web)
     public LinearLayout linearLayout;
     @Bind(R.id.et_url)
     public EditText etUrl;
+    @Bind(R.id.et_btn)
+    public Button etBtn;
     private WebSettings webSettings;
     private ProgressDialog progressDialog;//加载界面的菊花
     private PlaylistAdapter adapter;
@@ -141,20 +144,6 @@ public class WebviewFragment extends BaseFragment {
         }
         mWebView.loadUrl(url);
         linearLayout.setVisibility(View.GONE);
-    }
-
-    /**
-     * 跳转操作
-     * @param view
-     */
-    public void toChange(View view){
-        //1.获取地址
-        String url = etUrl.getText().toString().trim();
-        if(TextUtils.isEmpty(url)){
-            url = Keys.HOME_PAGE;//如果为空，赋默认值：tomcat首页
-        }
-        //2.webview展示地址
-        mWebView.loadUrl(url);
     }
 
     private final class JSInterface{
@@ -269,6 +258,33 @@ public class WebviewFragment extends BaseFragment {
             }
             }
         }
+
+    @Override
+    protected void setListener() {
+        etBtn.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.et_btn:
+                toChange();
+                break;
+        }
+    }
+
+    /**
+     * 跳转操作
+     */
+    public void toChange(){
+        //1.获取地址
+        String url = etUrl.getText().toString().trim();
+        if(TextUtils.isEmpty(url)){
+            url = Keys.HOME_PAGE;//如果为空，赋默认值：tomcat首页
+        }
+        //2.webview展示地址
+        mWebView.loadUrl(url);
+    }
 
     public void showHideAddress() {
         if (linearLayout.getVisibility() == View.GONE) {

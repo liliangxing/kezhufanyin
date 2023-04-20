@@ -26,6 +26,7 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import me.kezhu.music.adapter.FragmentAdapter;
@@ -288,7 +289,7 @@ public class MusicActivity extends BaseActivity implements View.OnClickListener,
 
     @Override
     public void onPageSelected(int position) {
-        FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) mWebView.getLayoutParams();
+        LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) mWebView.getLayoutParams();
         if (position == 0) {
             tvLocalMusic.setSelected(true);
             tvOnlineMusic.setSelected(false);
