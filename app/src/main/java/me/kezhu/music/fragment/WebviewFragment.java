@@ -69,7 +69,7 @@ public class WebviewFragment extends BaseFragment implements View.OnClickListene
     private String LAST_OPEN_URL;
     private Integer loopCount;
     private View xCustomView;
-    private WebChromeClient.CustomViewCallback   xCustomViewCallback;
+    private WebChromeClient.CustomViewCallback xCustomViewCallback;
     private static final String FILE_NAME = "test.txt";
 
     @Nullable
@@ -83,11 +83,11 @@ public class WebviewFragment extends BaseFragment implements View.OnClickListene
         super.onActivityCreated(savedInstanceState);
         adapter = new PlaylistAdapter(AppCache.get().getLocalMusicList());
         init();
-        handler1 = new Handler(){
+        handler1 = new Handler() {
             @Override
             public void handleMessage(Message msg) {
                 String url = LAST_OPEN_URL;
-                if (url!=null) {
+                if (url != null) {
                     downloadAndPlay(url);
                 }
             }
@@ -96,7 +96,7 @@ public class WebviewFragment extends BaseFragment implements View.OnClickListene
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
-        outState.putString(Keys.WEBVIEW_URL,  mWebView.getUrl());
+        outState.putString(Keys.WEBVIEW_URL, mWebView.getUrl());
 
     }
 
@@ -106,7 +106,7 @@ public class WebviewFragment extends BaseFragment implements View.OnClickListene
         });
     }
 
-    private void init(){
+    private void init() {
         webSettings = mWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         webSettings.setMediaPlaybackRequiresUserGesture(false);
@@ -114,7 +114,7 @@ public class WebviewFragment extends BaseFragment implements View.OnClickListene
         webSettings.setLoadWithOverviewMode(true);
         //webSettings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
         mWebView.setVerticalScrollBarEnabled(true);
-        mWebView.setWebViewClient(new MyWebViewClient(this.getContext(),progressDialog){
+        mWebView.setWebViewClient(new MyWebViewClient(this.getContext(), progressDialog) {
             /**
              * 当打开超链接的时候，回调的方法
              * WebView：自己本身mWebView
@@ -122,9 +122,9 @@ public class WebviewFragment extends BaseFragment implements View.OnClickListene
              */
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                if(HttpUtils.IsVideoUrl(url)){
+                if (HttpUtils.IsVideoUrl(url)) {
                     Intent intent = new Intent(getActivity(), FullScreenActivity.class);
-                    intent.putExtra("url",url);
+                    intent.putExtra("url", url);
                     startActivity(intent);
                     return true;
                 }
@@ -138,20 +138,15 @@ public class WebviewFragment extends BaseFragment implements View.OnClickListene
         mWebView.addJavascriptInterface(
                 new JSInterface()
                 , "itcast");
-        String url = FileUtils.readFileData(FILE_NAME, getActivity()); // 读取文件
-        if (url.equals("")) {
-            url = Keys.HOME_PAGE;
-        }
-        mWebView.loadUrl(url);
-        linearLayout.setVisibility(View.GONE);
+        initHomePage();
     }
 
-    private final class JSInterface{
+    private final class JSInterface {
         @SuppressLint("JavascriptInterface")
         @JavascriptInterface
-        public void showToast(String url){
+        public void showToast(String url) {
             Message message = new Message();
-            LAST_OPEN_URL=url;
+            LAST_OPEN_URL = url;
             handler1.sendMessage(message);
         }
     }
@@ -166,29 +161,31 @@ public class WebviewFragment extends BaseFragment implements View.OnClickListene
             progressDialog.show();
         }
     }
+
     public void cancelProgress() {
         if (progressDialog != null && progressDialog.isShowing()) {
             progressDialog.cancel();
         }
     }
 
-    public void downloadAndPlay(String url){
+    public void downloadAndPlay(String url) {
         String fileName = HttpUtils.getFileName(url);
 
-        String path  = FileUtils.getMusicDir().concat(fileName);
+        String path = FileUtils.getMusicDir().concat(fileName);
         File file = new File(path);
-        if(!file.exists()){
-                    OkHttpUtils.get().url(url).build()
+        if (!file.exists()) {
+            OkHttpUtils.get().url(url).build()
                     .execute(new FileCallBack(FileUtils.getMusicDir(), fileName) {
-                        boolean finishScanned =false;
+                        boolean finishScanned = false;
+
                         @Override
                         public void onBefore(Request request, int id) {
-                            showProgress(getString(R.string.now_download,fileName));
+                            showProgress(getString(R.string.now_download, fileName));
                         }
 
                         @Override
                         public void inProgress(float progress, long total, int id) {
-                            showProgress("正在下载……"+((float)Math.round(progress*100*100)/100)+"%");
+                            showProgress("正在下载……" + ((float) Math.round(progress * 100 * 100) / 100) + "%");
                         }
 
                         @Override
@@ -203,7 +200,7 @@ public class WebviewFragment extends BaseFragment implements View.OnClickListene
 
                         @Override
                         public void onAfter(int id) {
-                            if(!finishScanned){
+                            if (!finishScanned) {
                                 // 刷新媒体库
                                 Intent intent =
                                         new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.parse(file.toURI().toString()));
@@ -212,40 +209,40 @@ public class WebviewFragment extends BaseFragment implements View.OnClickListene
                             }
                             loopCount = 3;
                             cancelProgress();
-                            checkCounter(fileName,true);
+                            checkCounter(fileName, true);
                         }
                     });
-        }else {
-            checkCounter(fileName,false);
+        } else {
+            checkCounter(fileName, false);
         }
 
     }
 
-    private void  checkCounter(String fileName,boolean loop){
-        String path  = FileUtils.getMusicDir().concat(fileName);
+    private void checkCounter(String fileName, boolean loop) {
+        String path = FileUtils.getMusicDir().concat(fileName);
         List<Music> musicList = MusicUtils.scanMusic(getContext());
-        for(Music m:musicList) {
-            if(m.getPath().equals(path)) {
+        for (Music m : musicList) {
+            if (m.getPath().equals(path)) {
                 AudioPlayer.get().addAndPlay(m);
                 ToastUtils.show("已添加到播放列表");
                 loop = false;
                 MusicActivity.instance.showPlayingFragment();
                 break;
-            }else {
+            } else {
                 loop = true;
             }
         }
         if (loop) {
-            if(null == loopCount){
+            if (null == loopCount) {
                 //直接拿，又匹配不到媒体库，删除文件，重新走下载流程
-                File  file=new File(path);
-                if(file.delete()){
+                File file = new File(path);
+                if (file.delete()) {
                     downloadAndPlay(LAST_OPEN_URL);
                     return;
                 }
             }
-            loopCount --;
-            if(loopCount<0) return;
+            loopCount--;
+            if (loopCount < 0) return;
             try {
                 //耗时的操作
                 ToastUtils.show("下载完毕，尝试播放中...");
@@ -256,8 +253,8 @@ public class WebviewFragment extends BaseFragment implements View.OnClickListene
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            }
         }
+    }
 
     @Override
     protected void setListener() {
@@ -276,10 +273,10 @@ public class WebviewFragment extends BaseFragment implements View.OnClickListene
     /**
      * 跳转操作
      */
-    public void toChange(){
+    public void toChange() {
         //1.获取地址
         String url = etUrl.getText().toString().trim();
-        if(TextUtils.isEmpty(url)){
+        if (TextUtils.isEmpty(url)) {
             url = Keys.HOME_PAGE;//如果为空，赋默认值：tomcat首页
         }
         //2.webview展示地址
@@ -292,6 +289,16 @@ public class WebviewFragment extends BaseFragment implements View.OnClickListene
         } else {
             linearLayout.setVisibility(View.GONE);
         }
+    }
+
+    private void initHomePage() {
+        String url = FileUtils.readFileData(FILE_NAME, getActivity()); // 读取文件
+        if (url.equals("")) {
+            url = Keys.HOME_PAGE;
+        }
+        etUrl.setText(url);
+        mWebView.loadUrl(url);
+        linearLayout.setVisibility(View.GONE);
     }
 
     public void setHomePage() {
