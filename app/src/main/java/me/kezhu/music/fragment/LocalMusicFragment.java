@@ -196,7 +196,7 @@ public class LocalMusicFragment extends BaseFragment implements AdapterView.OnIt
         AudioManager am = (AudioManager) getContext().getSystemService(Context.AUDIO_SERVICE);
         Calendar cal = Calendar.getInstance();
         int hour = cal.get(Calendar.HOUR_OF_DAY);
-        int targetVolume = (hour >= 23) ? 16 : 45;
+        int targetVolume = (hour >= 23) ? 16 : 20;
         am.setStreamVolume(AudioManager.STREAM_MUSIC, targetVolume, AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE);
 
         QuitTimer.get().start(30 * 60 * 1000);
@@ -216,6 +216,8 @@ public class LocalMusicFragment extends BaseFragment implements AdapterView.OnIt
                     ToastUtils.show("定时播放已取消");
                 })
                 .setOnCancelListener(dialog -> {
+                    QuitTimer.get().stop();
+                    ToastUtils.show("定时播放已取消");
                 })
                 .create();
         cancelTimerDialog.setCanceledOnTouchOutside(false);

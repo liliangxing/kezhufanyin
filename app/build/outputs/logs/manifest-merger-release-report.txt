@@ -1,0 +1,297 @@
+-- Merging decision tree log ---
+provider#android.support.v4.content.FileProvider
+INJECTED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:26:9-34:20
+	android:grantUriPermissions
+		ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:30:13-47
+	android:authorities
+		INJECTED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml
+		ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:28:13-64
+	android:exported
+		ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:29:13-37
+	android:name
+		ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:27:13-67
+meta-data#com.amap.api.v2.apikey
+INJECTED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:36:9-38:43
+	android:value
+		INJECTED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml
+		ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:38:13-40
+	android:name
+		ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:37:13-50
+manifest
+ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:2:1-104:12
+INJECTED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:2:1-104:12
+INJECTED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:2:1-104:12
+INJECTED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:2:1-104:12
+MERGED from [com.android.support:design:27.1.1] /root/.gradle/caches/transforms-2/files-2.1/090ca09b825ab4c2ebaa1020e66d473b/design-27.1.1/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:appcompat-v7:27.1.1] /root/.gradle/caches/transforms-2/files-2.1/6d359ea6d6374310b5c4470154cf5028/appcompat-v7-27.1.1/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /root/.gradle/caches/transforms-2/files-2.1/b15083f753db6d15e967fbaa17d4514c/constraint-layout-1.0.2/AndroidManifest.xml:2:1-11:12
+MERGED from [com.zhy:okhttputils:2.6.2] /root/.gradle/caches/transforms-2/files-2.1/d2d3e0cd8eb2077fc60cd3f2d31689bf/okhttputils-2.6.2/AndroidManifest.xml:2:1-11:12
+MERGED from [me.wcy:lrcview:2.0.1] /root/.gradle/caches/transforms-2/files-2.1/c71f14f268aa2dbc867e239a4ab0bd18/lrcview-2.0.1/AndroidManifest.xml:2:1-12:12
+MERGED from [com.hwangjr.rxbus:rxbus:2.0.0] /root/.gradle/caches/transforms-2/files-2.1/2e8365ad9ad59095d060cfd87b2c97af/rxbus-2.0.0/AndroidManifest.xml:2:1-14:12
+MERGED from [com.android.support:support-v4:27.1.1] /root/.gradle/caches/transforms-2/files-2.1/04afc0327164f0a8080071b23617ca8e/support-v4-27.1.1/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-fragment:27.1.1] /root/.gradle/caches/transforms-2/files-2.1/a61819d0b0cbb6b4990cd2b89c30b13d/support-fragment-27.1.1/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] /root/.gradle/caches/transforms-2/files-2.1/4860c6b3ec1930e85bbc7f31e8a33c6e/animated-vector-drawable-27.1.1/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:recyclerview-v7:27.1.1] /root/.gradle/caches/transforms-2/files-2.1/3fd0ea68be0747c9814745d0b2d901e7/recyclerview-v7-27.1.1/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:27.1.1] /root/.gradle/caches/transforms-2/files-2.1/a2837af8d9d7102d6e7f2bb09adacbb6/support-core-ui-27.1.1/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-utils:27.1.1] /root/.gradle/caches/transforms-2/files-2.1/d32c9cf6e86c8cf8431fc80ce930c720/support-core-utils-27.1.1/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-vector-drawable:27.1.1] /root/.gradle/caches/transforms-2/files-2.1/c4788fd5cdcbe8437d93713a2389003d/support-vector-drawable-27.1.1/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:transition:27.1.1] /root/.gradle/caches/transforms-2/files-2.1/e52a995fedb32e626dd93b0b25fd95ad/transition-27.1.1/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-media-compat:27.1.1] /root/.gradle/caches/transforms-2/files-2.1/7ff9afb9dcecc0be1919885d34d58dfa/support-media-compat-27.1.1/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-compat:27.1.1] /root/.gradle/caches/transforms-2/files-2.1/f3dc79aa116f01bdfc57543bd838583e/support-compat-27.1.1/AndroidManifest.xml:17:1-22:12
+MERGED from [io.reactivex.rxjava2:rxandroid:2.0.1] /root/.gradle/caches/transforms-2/files-2.1/40f516a174e520f46f8960b8cde44b2e/rxandroid-2.0.1/AndroidManifest.xml:15:1-21:12
+MERGED from [com.jakewharton.timber:timber:4.5.1] /root/.gradle/caches/transforms-2/files-2.1/4dbc65a2e719885b59d884c0175cd9fe/timber-4.5.1/AndroidManifest.xml:2:1-10:12
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /root/.gradle/caches/transforms-2/files-2.1/591b8a6377e1088b1287affd0240d113/livedata-core-1.1.0/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] /root/.gradle/caches/transforms-2/files-2.1/ca7c21b220350552287230595d4c1d57/viewmodel-1.1.0/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:runtime:1.1.0] /root/.gradle/caches/transforms-2/files-2.1/b89db69df866d4c8a4b2d656bf175000/runtime-1.1.0/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.core:runtime:1.1.0] /root/.gradle/caches/transforms-2/files-2.1/7da255ba7c69e0fe7bec06d99f3181e6/runtime-1.1.0/AndroidManifest.xml:17:1-22:12
+INJECTED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:2:1-104:12
+INJECTED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:2:1-104:12
+INJECTED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:2:1-104:12
+	package
+		ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:3:5-29
+		INJECTED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml
+		INJECTED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml
+		ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:2:1-104:12
+		INJECTED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml
+		ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:2:1-104:12
+		INJECTED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:2:11-69
+uses-permission#android.permission.INTERNET
+ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:5:5-67
+	android:name
+		ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:5:22-64
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:6:5-79
+	android:name
+		ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:6:22-76
+uses-permission#android.permission.ACCESS_WIFI_STATE
+ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:7:5-76
+	android:name
+		ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:7:22-73
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:8:5-81
+	android:name
+		ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:8:22-78
+uses-permission#android.permission.MOUNT_UNMOUNT_FILESYSTEMS
+ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:9:5-84
+	android:name
+		ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:9:22-81
+uses-permission#android.permission.WRITE_SETTINGS
+ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:10:5-73
+	android:name
+		ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:10:22-70
+uses-permission#android.permission.READ_LOGS
+ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:17:5-68
+	android:name
+		ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:17:22-65
+application
+ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:19:5-102:19
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /root/.gradle/caches/transforms-2/files-2.1/b15083f753db6d15e967fbaa17d4514c/constraint-layout-1.0.2/AndroidManifest.xml:9:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /root/.gradle/caches/transforms-2/files-2.1/b15083f753db6d15e967fbaa17d4514c/constraint-layout-1.0.2/AndroidManifest.xml:9:5-20
+MERGED from [com.hwangjr.rxbus:rxbus:2.0.0] /root/.gradle/caches/transforms-2/files-2.1/2e8365ad9ad59095d060cfd87b2c97af/rxbus-2.0.0/AndroidManifest.xml:9:5-12:19
+MERGED from [com.hwangjr.rxbus:rxbus:2.0.0] /root/.gradle/caches/transforms-2/files-2.1/2e8365ad9ad59095d060cfd87b2c97af/rxbus-2.0.0/AndroidManifest.xml:9:5-12:19
+MERGED from [com.jakewharton.timber:timber:4.5.1] /root/.gradle/caches/transforms-2/files-2.1/4dbc65a2e719885b59d884c0175cd9fe/timber-4.5.1/AndroidManifest.xml:8:5-20
+MERGED from [com.jakewharton.timber:timber:4.5.1] /root/.gradle/caches/transforms-2/files-2.1/4dbc65a2e719885b59d884c0175cd9fe/timber-4.5.1/AndroidManifest.xml:8:5-20
+	android:supportsRtl
+		ADDED from [com.hwangjr.rxbus:rxbus:2.0.0] /root/.gradle/caches/transforms-2/files-2.1/2e8365ad9ad59095d060cfd87b2c97af/rxbus-2.0.0/AndroidManifest.xml:11:9-35
+	android:label
+		ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:23:9-41
+	android:configChanges
+		ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:24:9-81
+	android:icon
+		ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:22:9-45
+	android:allowBackup
+		ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:21:9-35
+	android:theme
+		ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:25:9-40
+	android:name
+		ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:20:9-67
+service#me.kezhu.music.service.PlayService
+ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:40:9-70
+	android:name
+		ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:40:18-67
+receiver#me.kezhu.music.receiver.DownloadReceiver
+ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:42:9-46:20
+	android:name
+		ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:42:19-74
+intent-filter#action:name:android.intent.action.DOWNLOAD_COMPLETE
+ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:43:13-45:29
+action#android.intent.action.DOWNLOAD_COMPLETE
+ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:44:17-82
+	android:name
+		ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:44:25-79
+receiver#me.kezhu.music.receiver.RemoteControlReceiver
+ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:47:9-51:20
+	android:name
+		ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:47:19-79
+intent-filter#action:name:android.intent.action.MEDIA_BUTTON
+ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:48:13-50:29
+action#android.intent.action.MEDIA_BUTTON
+ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:49:17-77
+	android:name
+		ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:49:25-74
+receiver#me.kezhu.music.receiver.StatusBarReceiver
+ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:52:9-56:20
+	android:name
+		ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:52:19-75
+intent-filter#action:name:me.kezhu.music.STATUS_BAR_ACTIONS
+ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:53:13-55:29
+action#me.kezhu.music.STATUS_BAR_ACTIONS
+ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:54:17-76
+	android:name
+		ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:54:25-73
+activity#me.kezhu.music.activity.MusicActivity
+ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:58:9-68:20
+	android:screenOrientation
+		ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:62:13-49
+	android:label
+		ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:60:13-45
+	android:windowSoftInputMode
+		ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:61:13-70
+	android:name
+		ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:59:13-65
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:63:13-67:29
+action#android.intent.action.MAIN
+ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:64:17-69
+	android:name
+		ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:64:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:66:17-77
+	android:name
+		ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:66:27-74
+activity#me.kezhu.music.activity.OnlineMusicActivity
+ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:69:9-71:52
+	android:screenOrientation
+		ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:71:13-49
+	android:name
+		ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:70:13-71
+activity#me.kezhu.music.activity.ArtistInfoActivity
+ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:72:9-75:52
+	android:screenOrientation
+		ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:75:13-49
+	android:label
+		ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:74:13-48
+	android:name
+		ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:73:13-70
+activity#me.kezhu.music.activity.SearchMusicActivity
+ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:76:9-79:54
+	android:screenOrientation
+		ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:78:13-49
+	android:theme
+		ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:79:13-51
+	android:name
+		ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:77:13-71
+activity#me.kezhu.music.activity.SettingActivity
+ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:80:9-83:52
+	android:screenOrientation
+		ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:83:13-49
+	android:label
+		ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:82:13-49
+	android:name
+		ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:81:13-67
+activity#me.kezhu.music.activity.AboutActivity
+ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:84:9-87:52
+	android:screenOrientation
+		ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:87:13-49
+	android:label
+		ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:86:13-47
+	android:name
+		ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:85:13-65
+activity#me.kezhu.music.activity.FullScreenActivity
+ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:88:9-90:88
+	android:configChanges
+		ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:90:13-85
+	android:name
+		ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:89:13-70
+activity#me.kezhu.music.activity.MusicInfoActivity
+ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:91:9-94:52
+	android:screenOrientation
+		ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:94:13-49
+	android:label
+		ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:93:13-47
+	android:name
+		ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:92:13-69
+activity#me.kezhu.music.activity.SubscribeMessageActivity
+ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:95:9-97:52
+	android:screenOrientation
+		ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:97:13-49
+	android:name
+		ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:96:13-76
+activity#me.kezhu.music.activity.PlaylistActivity
+ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:98:9-101:52
+	android:screenOrientation
+		ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:101:13-49
+	android:label
+		ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:100:13-54
+	android:name
+		ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:99:13-68
+uses-sdk
+INJECTED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml
+INJECTED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml
+MERGED from [com.android.support:design:27.1.1] /root/.gradle/caches/transforms-2/files-2.1/090ca09b825ab4c2ebaa1020e66d473b/design-27.1.1/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design:27.1.1] /root/.gradle/caches/transforms-2/files-2.1/090ca09b825ab4c2ebaa1020e66d473b/design-27.1.1/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:27.1.1] /root/.gradle/caches/transforms-2/files-2.1/6d359ea6d6374310b5c4470154cf5028/appcompat-v7-27.1.1/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:27.1.1] /root/.gradle/caches/transforms-2/files-2.1/6d359ea6d6374310b5c4470154cf5028/appcompat-v7-27.1.1/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /root/.gradle/caches/transforms-2/files-2.1/b15083f753db6d15e967fbaa17d4514c/constraint-layout-1.0.2/AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /root/.gradle/caches/transforms-2/files-2.1/b15083f753db6d15e967fbaa17d4514c/constraint-layout-1.0.2/AndroidManifest.xml:5:5-7:41
+MERGED from [com.zhy:okhttputils:2.6.2] /root/.gradle/caches/transforms-2/files-2.1/d2d3e0cd8eb2077fc60cd3f2d31689bf/okhttputils-2.6.2/AndroidManifest.xml:7:5-9:41
+MERGED from [com.zhy:okhttputils:2.6.2] /root/.gradle/caches/transforms-2/files-2.1/d2d3e0cd8eb2077fc60cd3f2d31689bf/okhttputils-2.6.2/AndroidManifest.xml:7:5-9:41
+MERGED from [me.wcy:lrcview:2.0.1] /root/.gradle/caches/transforms-2/files-2.1/c71f14f268aa2dbc867e239a4ab0bd18/lrcview-2.0.1/AndroidManifest.xml:8:5-10:41
+MERGED from [me.wcy:lrcview:2.0.1] /root/.gradle/caches/transforms-2/files-2.1/c71f14f268aa2dbc867e239a4ab0bd18/lrcview-2.0.1/AndroidManifest.xml:8:5-10:41
+MERGED from [com.hwangjr.rxbus:rxbus:2.0.0] /root/.gradle/caches/transforms-2/files-2.1/2e8365ad9ad59095d060cfd87b2c97af/rxbus-2.0.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.hwangjr.rxbus:rxbus:2.0.0] /root/.gradle/caches/transforms-2/files-2.1/2e8365ad9ad59095d060cfd87b2c97af/rxbus-2.0.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support:support-v4:27.1.1] /root/.gradle/caches/transforms-2/files-2.1/04afc0327164f0a8080071b23617ca8e/support-v4-27.1.1/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:27.1.1] /root/.gradle/caches/transforms-2/files-2.1/04afc0327164f0a8080071b23617ca8e/support-v4-27.1.1/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.1.1] /root/.gradle/caches/transforms-2/files-2.1/a61819d0b0cbb6b4990cd2b89c30b13d/support-fragment-27.1.1/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.1.1] /root/.gradle/caches/transforms-2/files-2.1/a61819d0b0cbb6b4990cd2b89c30b13d/support-fragment-27.1.1/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] /root/.gradle/caches/transforms-2/files-2.1/4860c6b3ec1930e85bbc7f31e8a33c6e/animated-vector-drawable-27.1.1/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] /root/.gradle/caches/transforms-2/files-2.1/4860c6b3ec1930e85bbc7f31e8a33c6e/animated-vector-drawable-27.1.1/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:27.1.1] /root/.gradle/caches/transforms-2/files-2.1/3fd0ea68be0747c9814745d0b2d901e7/recyclerview-v7-27.1.1/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:27.1.1] /root/.gradle/caches/transforms-2/files-2.1/3fd0ea68be0747c9814745d0b2d901e7/recyclerview-v7-27.1.1/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.1.1] /root/.gradle/caches/transforms-2/files-2.1/a2837af8d9d7102d6e7f2bb09adacbb6/support-core-ui-27.1.1/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.1.1] /root/.gradle/caches/transforms-2/files-2.1/a2837af8d9d7102d6e7f2bb09adacbb6/support-core-ui-27.1.1/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.1.1] /root/.gradle/caches/transforms-2/files-2.1/d32c9cf6e86c8cf8431fc80ce930c720/support-core-utils-27.1.1/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.1.1] /root/.gradle/caches/transforms-2/files-2.1/d32c9cf6e86c8cf8431fc80ce930c720/support-core-utils-27.1.1/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.1.1] /root/.gradle/caches/transforms-2/files-2.1/c4788fd5cdcbe8437d93713a2389003d/support-vector-drawable-27.1.1/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.1.1] /root/.gradle/caches/transforms-2/files-2.1/c4788fd5cdcbe8437d93713a2389003d/support-vector-drawable-27.1.1/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:27.1.1] /root/.gradle/caches/transforms-2/files-2.1/e52a995fedb32e626dd93b0b25fd95ad/transition-27.1.1/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:27.1.1] /root/.gradle/caches/transforms-2/files-2.1/e52a995fedb32e626dd93b0b25fd95ad/transition-27.1.1/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:27.1.1] /root/.gradle/caches/transforms-2/files-2.1/7ff9afb9dcecc0be1919885d34d58dfa/support-media-compat-27.1.1/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:27.1.1] /root/.gradle/caches/transforms-2/files-2.1/7ff9afb9dcecc0be1919885d34d58dfa/support-media-compat-27.1.1/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.1.1] /root/.gradle/caches/transforms-2/files-2.1/f3dc79aa116f01bdfc57543bd838583e/support-compat-27.1.1/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.1.1] /root/.gradle/caches/transforms-2/files-2.1/f3dc79aa116f01bdfc57543bd838583e/support-compat-27.1.1/AndroidManifest.xml:20:5-44
+MERGED from [io.reactivex.rxjava2:rxandroid:2.0.1] /root/.gradle/caches/transforms-2/files-2.1/40f516a174e520f46f8960b8cde44b2e/rxandroid-2.0.1/AndroidManifest.xml:19:5-43
+MERGED from [io.reactivex.rxjava2:rxandroid:2.0.1] /root/.gradle/caches/transforms-2/files-2.1/40f516a174e520f46f8960b8cde44b2e/rxandroid-2.0.1/AndroidManifest.xml:19:5-43
+MERGED from [com.jakewharton.timber:timber:4.5.1] /root/.gradle/caches/transforms-2/files-2.1/4dbc65a2e719885b59d884c0175cd9fe/timber-4.5.1/AndroidManifest.xml:6:5-43
+MERGED from [com.jakewharton.timber:timber:4.5.1] /root/.gradle/caches/transforms-2/files-2.1/4dbc65a2e719885b59d884c0175cd9fe/timber-4.5.1/AndroidManifest.xml:6:5-43
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /root/.gradle/caches/transforms-2/files-2.1/591b8a6377e1088b1287affd0240d113/livedata-core-1.1.0/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /root/.gradle/caches/transforms-2/files-2.1/591b8a6377e1088b1287affd0240d113/livedata-core-1.1.0/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] /root/.gradle/caches/transforms-2/files-2.1/ca7c21b220350552287230595d4c1d57/viewmodel-1.1.0/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] /root/.gradle/caches/transforms-2/files-2.1/ca7c21b220350552287230595d4c1d57/viewmodel-1.1.0/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.0] /root/.gradle/caches/transforms-2/files-2.1/b89db69df866d4c8a4b2d656bf175000/runtime-1.1.0/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.0] /root/.gradle/caches/transforms-2/files-2.1/b89db69df866d4c8a4b2d656bf175000/runtime-1.1.0/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.0] /root/.gradle/caches/transforms-2/files-2.1/7da255ba7c69e0fe7bec06d99f3181e6/runtime-1.1.0/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.0] /root/.gradle/caches/transforms-2/files-2.1/7da255ba7c69e0fe7bec06d99f3181e6/runtime-1.1.0/AndroidManifest.xml:20:5-44
+INJECTED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml
+INJECTED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml
+		ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml
+		INJECTED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml
+		ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml
+		INJECTED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml
+meta-data#android.support.FILE_PROVIDER_PATHS
+ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:31:13-33:58
+	android:resource
+		ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:33:17-55
+	android:name
+		ADDED from /tmp/kezhufanyin/app/src/main/AndroidManifest.xml:32:17-67

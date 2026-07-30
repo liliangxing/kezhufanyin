@@ -1,0 +1,4 @@
+#Mon Jul 27 13:28:58 UTC 2026
+base.0=/tmp/kezhufanyin/app/build/intermediates/dex/release/mergeDexRelease/out/classes.dex
+path.0=classes.dex
+renamed.0=classes.dex
