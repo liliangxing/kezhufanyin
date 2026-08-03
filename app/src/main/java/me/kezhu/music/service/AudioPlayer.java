@@ -40,6 +40,11 @@ public class AudioPlayer {
     private List<Music> musicList;
     private final List<OnPlayerEventListener> listeners = new ArrayList<>();
     private int state = STATE_IDLE;
+    private boolean webMode = false;
+    private boolean webFinished = false;
+    private Music webMusic;
+    private volatile int statePosition = 0;
+    private volatile int stateDuration = 0;
 
     public static AudioPlayer get() {
         return SingletonHolder.instance;
@@ -60,7 +65,13 @@ public class AudioPlayer {
         handler = new Handler(Looper.getMainLooper());
         noisyReceiver = new NoisyAudioStreamReceiver();
         noisyFilter = new IntentFilter(AudioManager.ACTION_AUDIO_BECOMING_NOISY);
-        mediaPlayer.setOnCompletionListener(mp -> next());
+        mediaPlayer.setOnCompletionListener(mp -> {
+            if (webMode) {
+                finishWebMode();
+            } else {
+                next();
+            }
+        });
         mediaPlayer.setOnPreparedListener(mp -> {
             if (isPreparing()) {
                 startPlayer();
@@ -91,6 +102,82 @@ public class AudioPlayer {
             position = musicList.size() - 1;
         }
         play(position);
+    }
+
+    public void playWeb(String url) {
+        Music music = new Music();
+        music.setType(Music.Type.ONLINE);
+        music.setPath(url);
+        String name = url;
+        int slash = url.lastIndexOf('/');
+        if (slash >= 0 && slash < url.length() - 1) {
+            name = url.substring(slash + 1);
+        }
+        music.setTitle(name);
+        music.setDuration(0);
+        webMode = true;
+        webFinished = false;
+        webMusic = music;
+        statePosition = 0;
+        stateDuration = 0;
+        try {
+            mediaPlayer.reset();
+            mediaPlayer.setDataSource(url);
+            mediaPlayer.prepareAsync();
+            state = STATE_PREPARING;
+            Notifier.get().showPlay(music);
+            MediaSessionManager.get().updateMetaData(music);
+            MediaSessionManager.get().updatePlaybackState();
+            for (OnPlayerEventListener listener : listeners) {
+                listener.onChange(music);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            webMode = false;
+            webFinished = true;
+            ToastUtils.show("当前歌曲无法播放");
+        }
+    }
+
+    public boolean isWebMode() {
+        return webMode;
+    }
+
+    public void stopWeb() {
+        if (!webMode) {
+            return;
+        }
+        finishWebMode();
+    }
+
+    private void finishWebMode() {
+        webMode = false;
+        webFinished = true;
+        webMusic = null;
+        state = STATE_IDLE;
+        statePosition = 0;
+        stateDuration = 0;
+        handler.removeCallbacks(mPublishRunnable);
+        Notifier.get().cancelAll();
+        try {
+            mediaPlayer.reset();
+        } catch (Exception ignored) {
+        }
+    }
+
+    public String getStateJson() {
+        try {
+            StringBuilder sb = new StringBuilder();
+            sb.append("{\"playing\":").append(isPlaying())
+                    .append(",\"loading\":").append(isPreparing())
+                    .append(",\"finished\":").append(webFinished || (!webMode && isIdle()))
+                    .append(",\"position\":").append(statePosition)
+                    .append(",\"duration\":").append(stateDuration > 0 ? stateDuration : 0)
+                    .append("}");
+            return sb.toString();
+        } catch (Exception e) {
+            return "{}";
+        }
     }
 
     public void play(int position) {
@@ -155,6 +242,13 @@ public class AudioPlayer {
         }
     }
 
+    private Music getNotifierMusic() {
+        if (webMode && webMusic != null) {
+            return webMusic;
+        }
+        return getPlayMusic();
+    }
+
     public void startPlayer() {
         if (!isPreparing() && !isPausing()) {
             return;
@@ -164,7 +258,7 @@ public class AudioPlayer {
             mediaPlayer.start();
             state = STATE_PLAYING;
             handler.post(mPublishRunnable);
-            Notifier.get().showPlay(getPlayMusic());
+            Notifier.get().showPlay(getNotifierMusic());
             MediaSessionManager.get().updatePlaybackState();
             context.registerReceiver(noisyReceiver, noisyFilter);
 
@@ -186,7 +280,7 @@ public class AudioPlayer {
         mediaPlayer.pause();
         state = STATE_PAUSE;
         handler.removeCallbacks(mPublishRunnable);
-        Notifier.get().showPause(getPlayMusic());
+        Notifier.get().showPause(getNotifierMusic());
         MediaSessionManager.get().updatePlaybackState();
         context.unregisterReceiver(noisyReceiver);
         if (abandonAudioFocus) {
@@ -267,8 +361,13 @@ public class AudioPlayer {
         @Override
         public void run() {
             if (isPlaying()) {
+                try {
+                    statePosition = mediaPlayer.getCurrentPosition();
+                    stateDuration = mediaPlayer.getDuration();
+                } catch (Exception ignored) {
+                }
                 for (OnPlayerEventListener listener : listeners) {
-                    listener.onPublish(mediaPlayer.getCurrentPosition());
+                    listener.onPublish(statePosition);
                 }
             }
             handler.postDelayed(this, TIME_UPDATE);

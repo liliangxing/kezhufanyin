@@ -149,6 +149,36 @@ public class WebviewFragment extends BaseFragment implements View.OnClickListene
             LAST_OPEN_URL = url;
             handler1.sendMessage(message);
         }
+
+        @JavascriptInterface
+        public void playMusic(String url) {
+            if (url == null) {
+                return;
+            }
+            AudioPlayer.get().playWeb(url);
+        }
+
+        @JavascriptInterface
+        public void pauseMusic() {
+            AudioPlayer.get().pausePlayer();
+        }
+
+        @JavascriptInterface
+        public void resumeMusic() {
+            if (AudioPlayer.get().isPausing()) {
+                AudioPlayer.get().startPlayer();
+            }
+        }
+
+        @JavascriptInterface
+        public void seekTo(int msec) {
+            AudioPlayer.get().seekTo(msec);
+        }
+
+        @JavascriptInterface
+        public String getState() {
+            return AudioPlayer.get().getStateJson();
+        }
     }
 
     public void showProgress(String message) {

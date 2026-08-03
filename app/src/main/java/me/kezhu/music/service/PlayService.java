@@ -55,7 +55,7 @@ public class PlayService extends Service {
                     break;
             }
         }
-        return START_NOT_STICKY;
+        return START_STICKY;
     }
 
     private void stop() {
