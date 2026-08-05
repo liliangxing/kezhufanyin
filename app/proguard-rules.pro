@@ -24,6 +24,10 @@
     public static java.lang.String TABLENAME;
 }
 -keep class **$Properties
+-keep class me.kezhu.music.model.** { *; }
+-keepclassmembers class ** {
+    @org.greenrobot.greendao.annotation.Entity *;
+}
 # If you do not use SQLCipher:
 -dontwarn org.greenrobot.greendao.database.**
 # If you do not use Rx:
